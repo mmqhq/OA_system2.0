@@ -9,14 +9,10 @@
 <script type="text/javascript" src="../plugs/layui/layui.all.js"></script>
 <script src="../plugs/layui/layui.js"></script>
  <style>
- 	.layui-input{
- 		width:120px;
- 	}
- 	.layui-inline{
- 		margin-top:20px;
- 		text-align: center;
- 	}
- </style>
+.myJxDiv{
+	margin:10px;
+}
+</style>
  
  <script  type="text/javascript">
  layui.use(['laydate','form','table'], function(){
@@ -49,7 +45,7 @@
 	   table.render({
 		    elem: '#myjx-table'
 		    ,height: 315
-		    ,width:1000
+		    ,width:1100
 		    ,url: 'myJx_list'
 		     ,page: true 
 		    ,cols: [[
@@ -65,15 +61,11 @@
 	  
     }); 
 	  
-	  
-	   
-	  
-	
  </script>
 </head>
 <body>
 
-<div>
+<div class="myJxDiv">
 <form class="layui-form" action="#">
 <div class="layui-inline">
  	<div class="layui-input-inline">
@@ -110,15 +102,13 @@
 	    </div>
   </div>
 </div>
-  
   <div class="layui-inline">
 	<button class="layui-btn" style="margin-left:10px">查询</button>
   </div>
 </form>
-</div>
 
 <table id="myjx-table" lay-filter="test-myjx-table"></table>
-
+</div>
 
 </body>
 </html>

@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.oa.pojos.OaEmp;
 
-public interface IEmpdao extends JpaSpecificationExecutor<OaEmp>,JpaRepository<OaEmp, String>{
+public interface IOaEmpDao extends JpaSpecificationExecutor<OaEmp>,JpaRepository<OaEmp, String>{
 	
 	@Query("select e from OaEmp e")
 	public List<OaEmp> queryEmp(Pageable p);
