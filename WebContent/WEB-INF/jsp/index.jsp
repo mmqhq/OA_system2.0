@@ -97,6 +97,30 @@
 								<a href="javascript:;" data-url="page/user/userInfo.html"><i
 									class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>个人资料</cite></a>
 							</dd>
+							
+							<dd>
+								<a href="javascript:;" data-url="to_myJx"><i
+									class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>我的绩效</cite></a>
+							</dd>
+							<dd>
+								<a href="javascript:;" data-url="to_find_jx"><i
+									class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>绩效查询</cite></a>
+							</dd>
+							<dd>
+								<a href="javascript:;" data-url="to_kh_score"><i
+									class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>考核评分</cite></a>
+							</dd>
+							<dd>
+								<a href="javascript:;" data-url="to_kh_examtask"><i
+									class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>考核任务</cite></a>
+							</dd>
+							<dd>
+								<a href="javascript:;" data-url="to_kh_pertemp"><i
+									class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>考核模板</cite></a>
+							</dd>
+							
+							
+							
 							<dd>
 								<a href="javascript:;" data-url="page/user/changePwd.html"><i
 									class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>修改密码</cite></a>

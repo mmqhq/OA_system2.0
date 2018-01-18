@@ -45,10 +45,6 @@ public class OaJob implements Serializable {
 	@OneToMany(mappedBy="oaJob")
 	private List<OaMove> oaMoves;
 
-	//bi-directional many-to-one association to OaPertemp
-	@OneToMany(mappedBy="oaJob")
-	private List<OaPertemp> oaPertemps;
-
 	public OaJob() {
 	}
 
@@ -150,28 +146,6 @@ public class OaJob implements Serializable {
 		oaMove.setOaJob(null);
 
 		return oaMove;
-	}
-
-	public List<OaPertemp> getOaPertemps() {
-		return this.oaPertemps;
-	}
-
-	public void setOaPertemps(List<OaPertemp> oaPertemps) {
-		this.oaPertemps = oaPertemps;
-	}
-
-	public OaPertemp addOaPertemp(OaPertemp oaPertemp) {
-		getOaPertemps().add(oaPertemp);
-		oaPertemp.setOaJob(this);
-
-		return oaPertemp;
-	}
-
-	public OaPertemp removeOaPertemp(OaPertemp oaPertemp) {
-		getOaPertemps().remove(oaPertemp);
-		oaPertemp.setOaJob(null);
-
-		return oaPertemp;
 	}
 
 }

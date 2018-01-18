@@ -5,18 +5,38 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.oa.pojos.OaExamproject;
+import com.oa.pojos.OaPertemp;
+import com.oa.service.hq.ExamprojectService;
+import com.oa.service.hq.LevelService;
+import com.oa.service.hq.MyJiXiaoService;
+import com.oa.service.hq.PertempService;
+import com.oa.vo.ResultMap;
 import com.oa.vo.hq.FindJxVo;
+import com.oa.vo.hq.KhExamprojectVo;
 import com.oa.vo.hq.KhExamtaskVo;
+import com.oa.vo.hq.KhLevelVo;
+import com.oa.vo.hq.KhPertempVo;
 import com.oa.vo.hq.KhScoreVo;
 import com.oa.vo.hq.MyJxVo;
 
 @Controller
 public class MyJxController {
+	@Autowired
+	MyJiXiaoService MyJxService;
+	@Autowired
+	PertempService pertempService;
+	@Autowired
+	ExamprojectService examService;
+	@Autowired
+	LevelService leService;
+	
 	/**
 	 * 返回到'我的绩效'界面
 	 * @return
@@ -31,18 +51,8 @@ public class MyJxController {
 	 * @return
 	 */
 	@RequestMapping("/myJx_list")
-	public @ResponseBody Map<String, Object> myJxList(){
-		Map<String, Object> map=new HashMap<>();
-		List<MyJxVo> list = new ArrayList<>();
-		list.add(new MyJxVo(1,"优秀",90,90,90,"总体表现很不错"));
-		list.add(new MyJxVo(1,"良好",85,84,86,"工作认真"));
-		list.add(new MyJxVo(2,"合格",72,74,72,"还应继续努力"));
-		list.add(new MyJxVo(3,"优秀",93,92,95,"很棒"));
-		list.add(new MyJxVo(4,"不合格",55,60,50,"要加油吖"));
-		map.put("data", list);
-		map.put("count", list.size());
-		map.put("code", 0);
-		return map;
+	public @ResponseBody Map<String, Object> myJxList(int page, int limit,String time,String myJxType,String season,String empId){
+		return MyJxService.findMyJiXiao(page,limit,time,myJxType,season,empId);
 	}
 	
 	/**
@@ -105,7 +115,7 @@ public class MyJxController {
 	 * 返回到'考核任务'界面
 	 * @return
 	 */
-	@RequestMapping("/to_Kh_examtask")
+	@RequestMapping("/to_kh_examtask")
 	public String toKhExamtask(){
 		return "khExamtask";
 	}
@@ -130,6 +140,15 @@ public class MyJxController {
 	}
 	
 	/**
+	 * 返回到'考核任务-查看'界面
+	 * @return
+	 */
+	@RequestMapping("/to_see_kh_examtask")
+	public String toSeeKhExamtask(){
+		return "seeKhExamtask";
+	}
+	
+	/**
 	 * 返回到'考核任务-编辑'界面
 	 * @return
 	 */
@@ -147,4 +166,120 @@ public class MyJxController {
 		return "khPertemp";
 	}
 	
+	/**
+	 * 获取'考核模板'数据
+	 * @return
+	 */
+	@RequestMapping("/find_kh_pertemp_list")
+	public @ResponseBody Map<String,Object> findKhPertempList(int page,int limit,String khName,String khType,String khPertempTime1,String khPertempTime2){
+		return pertempService.findPertemp(page, limit,khName,khType,khPertempTime1,khPertempTime2);
+	}
+	
+	/**
+	 * 删除'考核模板'数据
+	 * @return
+	 */
+	@RequestMapping("/del_kh_pertemp_list")
+	public @ResponseBody Map<String,Object> delKhPertempList(String da){
+		try {
+			boolean result = pertempService.delPertemp(da);
+			ResultMap.putObj("success", result);
+			ResultMap.putObj("msg", result?"删除成功":"删除失败");
+			return ResultMap.getResultMap();
+		} catch (Exception e) {
+			ResultMap.putObj("success", false);
+			ResultMap.putObj("msg", e.getMessage());
+			return ResultMap.getResultMap();
+		}
+	}
+	
+	/**
+	 * '考核模板-编辑'界面
+	 * @return
+	 */
+	/*@RequestMapping("/to_edit_kh_pertemp")
+	public ModelAndView toEditKhPertemp(String khId){
+		ModelAndView mv=new ModelAndView("editKhPertemp");
+		KhPertempVo khPtVo=pertempService.findPertempOne(khId);
+        mv.addObject("pt",khPtVo);
+        return mv;
+	}*/
+	
+	/**
+	 * '考核模板-增加'界面
+	 * @return
+	 */
+	@RequestMapping("/to_add_kh_pertemp")
+	public String toAddKhPertemp(){
+        return "addKhPertemp";
+	}
+	
+	/**
+	 * '考核项目-编辑'界面
+	 * @return
+	 */
+	@RequestMapping("/to_edit_kh_examprojectLayer")
+	public ModelAndView tokhExamprojectLayer(){
+		ModelAndView mv=new ModelAndView("khExamprojectLayer");
+		return mv;
+	}
+	
+	/**
+	 * 返回到'等级标准-编辑'界面
+	 * @return
+	 */
+	@RequestMapping("/to_edit_kh_levelLayer")
+	public String tokhLevelLayer(){
+		return "khLevelLayer";
+	}
+	
+	/**
+	 * 获取'考核项目'数据
+	 * @return
+	 */
+	@RequestMapping("/find_kh_examproject_list")
+	public @ResponseBody Map<String,Object>  findKhExamprojectList(){
+		return examService.findOaExamproject();
+	}
+	
+	/**
+	 * 获取'考核等级'数据
+	 * @return
+	 */
+	@RequestMapping("/find_kh_level_list")
+	public @ResponseBody Map<String,Object>  findKhLevelList(){
+		return leService.findOaLevel();
+	}
+	/**
+	 * 新增'考核项目'
+	 * @return
+	 */
+	@RequestMapping("/to_addExamprojectList")
+	public @ResponseBody String findAddExamprojectList(String khName,int standScore,int minScore,int maxScore,String scorerule,String remark){
+		try {
+			boolean result = examService.addExamproject(khName, standScore, minScore, maxScore, scorerule, remark);
+			ResultMap.putObj("success", result);
+			ResultMap.putObj("msg", result?"增加考核项目成功":"增加考核项目失败");
+			return result?"增加考核项目成功":"增加考核项目失败";
+		} catch (Exception e) {
+			e.printStackTrace();
+			ResultMap.putObj("success", false);
+			ResultMap.putObj("msg", e.getMessage());
+			//return ResultMap.getResultMap();
+			return "出现异常，新增失败！"+ResultMap.getResultMap();
+		}
+	}
+	
+	/**
+	 * 获取'等级标准'数据
+	 * @return
+	 */
+	@RequestMapping("/find_edit_kh_level_list")
+	public @ResponseBody Map<String, Object> findEditKhLevel(){
+		Map<String, Object> map=new HashMap<>();
+		
+		return map;
+	}
+	
+		
 }

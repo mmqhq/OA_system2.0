@@ -9,13 +9,9 @@
 <script type="text/javascript" src="../plugs/layui/layui.all.js"></script>
 <script src="../plugs/layui/layui.js"></script>
  <style>
- 	.layui-input{
- 		width:120px;
- 	}
- 	.layui-inline{
- 		margin-top:20px;
- 		text-align: center;
- 	}
+ .findJxDiv{
+ 	margin:10px;
+ }
  </style>
  
  <script  type="text/javascript">
@@ -35,11 +31,11 @@
 	        	var optionstring = "";
 		          $.each(da.data,function(i,item){
 					if(data.value=="niandu"){
-						 $(".dd").hide();
+						$(".ff").hide();
 					}else if(item.province == data.value){
-						$(".dd").show();
+						$(".ff").show();
 			            optionstring += "<option value=\"" + item.code + "\" >" + item.name + "</option>";
-			            $("[name=season]").html('<option value=""></option>' + optionstring);
+			            $("[name=fingJxSeason]").html('<option value=""></option>' + optionstring);
 			            form.render('select'); 
 					}
 		          });
@@ -49,7 +45,7 @@
 	   table.render({
 		    elem: '#findJx-table'
 		    ,height: 315
-		    ,width:1000
+		    ,width:1100
 		    ,url: 'find_jx_list'
 		     ,page: true 
 		    ,cols: [[
@@ -69,7 +65,7 @@
 </head>
 <body>
 
-<div>
+<div class="findJxDiv">
 <form class="layui-form" action="#">
 <div class="layui-inline">
  	<div class="layui-input-inline">
@@ -81,14 +77,14 @@
   <div class="seasons">
    <label>年</label>
 	    <div class="layui-input-inline">
-	       <select class="layui-select" name="filter-findjx-select" lay-filter="filter-myjx-select">
+	       <select class="layui-select" name="filter-findjx-select" lay-filter="filter-findjx-select">
 	        	<option value="yuedu">月度考核</option>
 	        	<option value="jidu">季度考核</option>
 	        	<option value="niandu">年度考核</option>
       	  </select>
 	    </div>
-	    <div class="layui-input-inline dd" >
-	    	<select class="layui-select" name="season" id="season2">
+	    <div class="layui-input-inline ff" >
+	    	<select class="layui-select" name="fingJxSeason" id="fingJxSeason2">
 	    	   <option >请选择</option>
 		       <option value="yuedu1">一月</option>
 		       <option value="yuedu2">二月</option>
@@ -111,10 +107,8 @@
 	<button class="layui-btn" style="margin-left:10px">查询</button>
   </div>
 </form>
-</div>
 
 <table id="findJx-table" lay-filter="test-myjx-table"></table>
-
-
+</div>
 </body>
 </html>

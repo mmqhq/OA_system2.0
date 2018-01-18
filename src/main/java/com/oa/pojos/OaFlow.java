@@ -119,17 +119,4 @@ public class OaFlow implements Serializable {
 		this.turnState = turnState;
 	}
 
-	public OaFlow(int flowId, String empName, Date flowDate, String flowName, int flowState, int flowStep,
-			String flowTitle, int flowType, int turnState) {
-		super();
-		this.flowId = flowId;
-		this.empName = empName;
-		this.flowDate = flowDate;
-		this.flowName = flowName;
-		this.flowState = flowState;
-		this.flowStep = flowStep;
-		this.flowTitle = flowTitle;
-		this.flowType = flowType;
-		this.turnState = turnState;
-	}
 }

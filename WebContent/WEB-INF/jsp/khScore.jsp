@@ -10,20 +10,11 @@
 <script src="../plugs/layui/layui.js"></script>
 
 <style type="text/css">
-.layui-input {
-	width: 160px;
+.khScoreDiv{
+	margin:10px;
 }
-
-.layui-inline {
-	margin-top: 20px;
-	text-align: center;
-}
-
 .kh-one {
 	margin-top: 10px;
-}
-.layui-btn-xs:hover{
-	cursor:pointer;
 }
 </style>
 
@@ -32,7 +23,7 @@
 		var laydate = layui.laydate, form = layui.form;
 		//执行一个laydate实例
 		laydate.render({
-			elem : '#kh-year'
+			elem : '#khScore-year'
 			,type : 'year'
 		});
 		
@@ -41,16 +32,16 @@
 		table.render({
 			elem:'#khScoreTab'
 			,height:315
-			,width:990
+			,width:1100
 			,url:'find_kh_score_list'
 			,page:true
 			,cols:[[
-			        {field:'khName',title:'考核名称',width:150,align: 'center'},
-			        {field:'khStep',title:'考核步骤',width:150,align: 'center'},
-			        {field:'khPeople',title:'被考核人',width:150,align: 'center'},
-			        {field:'a',title:'评分开始',width:180,align: 'center'},
-			        {field:'b',title:'评分结束',width:180,align: 'center'},
-			        {title:'操作',width:180,align: 'center',toolbar: '#KhScoreBar',}
+			        {field:'khName',title:'考核名称',width:160,align: 'center'},
+			        {field:'khStep',title:'考核步骤',width:160,align: 'center'},
+			        {field:'khPeople',title:'被考核人',width:160,align: 'center'},
+			        {field:'a',title:'评分开始',width:170,align: 'center'},
+			        {field:'b',title:'评分结束',width:170,align: 'center'},
+			        {title:'操作',align: 'center',toolbar: '#KhScoreBar',}
 			      ]]
 		});
 		//表格内的工具条的点击事件
@@ -80,11 +71,12 @@
 </head>
 
 <body>
+<div class="khScoreDiv">
 	<form class="layui-form" action="#">
 		<div class="layui-inline">
 			<label>考核年份：</label>
 			<div class="layui-input-inline">
-				<input type="text" id="kh-year" class="layui-input">
+				<input type="text" id="khScore-year" class="layui-input">
 			</div>
 		</div>
 		<div class="layui-inline">
@@ -140,5 +132,6 @@
 	</form>
 	
 	<table id="khScoreTab" lay-filter="khScoreTabFilter"></table>
+</div>
 </body>
 </html>

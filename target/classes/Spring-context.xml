@@ -21,7 +21,5 @@
 		<import resource="classpath:Spring-mvc.xml"/>
 		<import resource="classpath:Spring-jdbc.xml"/>
 		
-		<bean id="menuService" class="com.oa.service.zmy.MenuService"/>
-		<bean id="flowService" class="com.oa.service.hlg.FlowService"/>
-		<bean id="leaveService" class="com.oa.service.hlg.LeaveService"/>
+		
 </beans>

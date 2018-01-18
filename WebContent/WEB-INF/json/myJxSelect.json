@@ -2,82 +2,82 @@
 	"data":[{
 	           "code": "1",
 	            "name": "一季度",
-	            "province": "jidu"
+	            "province": "0"
 	        },
 	        {
 	            "code": "2",
 	            "name": "二季度",
-	            "province": "jidu"
+	            "province": "0"
 	        },
 	        {
 	            "code": "3",
 	            "name": "三季度",
-	            "province": "jidu"
+	            "province": "0"
 	        },
 	        {
 	             "code": "4",
 	            "name": "四季度",
-	            "province": "jidu"
+	            "province": "0"
 	        },
 	         {
 	             "code": "5",
 	            "name": "一月",
-	            "province": "yuedu"
+	            "province": "1"
 	        },
 	        {
 	             "code": "6",
 	            "name": "二月",
-	            "province": "yuedu"
+	            "province": "1"
 	        },
 	        {
 	             "code": "7",
 	            "name": "三月",
-	            "province": "yuedu"
+	            "province": "1"
 	        },
 	        {
 	             "code": "8",
 	            "name": "四月",
-	            "province": "yuedu"
+	            "province": "1"
 	        },
 	        {
 	             "code": "9",
 	            "name": "五月",
-	            "province": "yuedu"
+	            "province": "1"
 	        },
 	        {
 	             "code": "10",
 	            "name": "六月",
-	            "province": "yuedu"
+	            "province": "1"
 	        },
 	        {
 	             "code": "11",
 	            "name": "七月",
-	            "province": "yuedu"
+	            "province": "1"
 	        },
 	        {
 	             "code": "12",
 	            "name": "八月",
-	            "province": "yuedu"
+	            "province": "1"
 	        },
 	        {
 	             "code": "13",
 	            "name": "九月",
-	            "province": "yuedu"
+	            "province": "1"
 	        },
 	        {
 	             "code": "14",
 	            "name": "十月",
-	            "province": "yuedu"
+	            "province": "1"
 	        },
 	        {
 	             "code": "15",
 	            "name": "十一月",
-	            "province": "yuedu"
+	            "province": "1"
 	        },
 	        {
 	             "code": "16",
 	            "name": "十二月",
-	            "province": "yuedu"
+	            "province": "1"
 	        }
 	 ]
 	 }

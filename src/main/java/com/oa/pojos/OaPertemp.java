@@ -50,20 +50,14 @@ public class OaPertemp implements Serializable {
 	@OneToMany(mappedBy="oaPertemp")
 	private List<OaExamtask> oaExamtasks;
 
+	//bi-directional many-to-one association to OaLevel
+	@OneToMany(mappedBy="oaPertemp")
+	private List<OaLevel> oaLevels;
+
 	//bi-directional many-to-one association to OaEmp
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="emp_id")
 	private OaEmp oaEmp;
-
-	//bi-directional many-to-one association to OaJob
-	@ManyToOne
-	@JoinColumn(name="job_id")
-	private OaJob oaJob;
-
-	//bi-directional many-to-one association to OaLevel
-	@ManyToOne
-	@JoinColumn(name="le_id")
-	private OaLevel oaLevel;
 
 	public OaPertemp() {
 	}
@@ -176,28 +170,34 @@ public class OaPertemp implements Serializable {
 		return oaExamtask;
 	}
 
+	public List<OaLevel> getOaLevels() {
+		return this.oaLevels;
+	}
+
+	public void setOaLevels(List<OaLevel> oaLevels) {
+		this.oaLevels = oaLevels;
+	}
+
+	public OaLevel addOaLevel(OaLevel oaLevel) {
+		getOaLevels().add(oaLevel);
+		oaLevel.setOaPertemp(this);
+
+		return oaLevel;
+	}
+
+	public OaLevel removeOaLevel(OaLevel oaLevel) {
+		getOaLevels().remove(oaLevel);
+		oaLevel.setOaPertemp(null);
+
+		return oaLevel;
+	}
+
 	public OaEmp getOaEmp() {
 		return this.oaEmp;
 	}
 
 	public void setOaEmp(OaEmp oaEmp) {
 		this.oaEmp = oaEmp;
-	}
-
-	public OaJob getOaJob() {
-		return this.oaJob;
-	}
-
-	public void setOaJob(OaJob oaJob) {
-		this.oaJob = oaJob;
-	}
-
-	public OaLevel getOaLevel() {
-		return this.oaLevel;
-	}
-
-	public void setOaLevel(OaLevel oaLevel) {
-		this.oaLevel = oaLevel;
 	}
 
 }

@@ -11,7 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.oa.dao.jpa.IScheduletypeDAO;
+import com.oa.dao.jpa.IOaScheduletypeDao;
 import com.oa.pojos.OaScheduletype;
 import com.oa.vo.qh.ScheduletypeVo;
 
@@ -24,7 +24,7 @@ import com.oa.vo.qh.ScheduletypeVo;
 @Transactional
 public class ScheduletypeService {
 	@Autowired
-	private IScheduletypeDAO iScheduletypeDAO;
+	private IOaScheduletypeDao iScheduletypeDAO;
 	
 	public Map<String, Object> queryAllScheduletype(int page ,int limit) {
 		Pageable pageable= new PageRequest(page-1, limit);

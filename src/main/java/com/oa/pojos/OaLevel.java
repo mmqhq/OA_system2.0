@@ -2,7 +2,6 @@ package com.oa.pojos;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -35,8 +34,9 @@ public class OaLevel implements Serializable {
 	private int leSx;
 
 	//bi-directional many-to-one association to OaPertemp
-	@OneToMany(mappedBy="oaLevel")
-	private List<OaPertemp> oaPertemps;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="pt_id")
+	private OaPertemp oaPertemp;
 
 	public OaLevel() {
 	}
@@ -89,26 +89,12 @@ public class OaLevel implements Serializable {
 		this.leSx = leSx;
 	}
 
-	public List<OaPertemp> getOaPertemps() {
-		return this.oaPertemps;
+	public OaPertemp getOaPertemp() {
+		return this.oaPertemp;
 	}
 
-	public void setOaPertemps(List<OaPertemp> oaPertemps) {
-		this.oaPertemps = oaPertemps;
-	}
-
-	public OaPertemp addOaPertemp(OaPertemp oaPertemp) {
-		getOaPertemps().add(oaPertemp);
-		oaPertemp.setOaLevel(this);
-
-		return oaPertemp;
-	}
-
-	public OaPertemp removeOaPertemp(OaPertemp oaPertemp) {
-		getOaPertemps().remove(oaPertemp);
-		oaPertemp.setOaLevel(null);
-
-		return oaPertemp;
+	public void setOaPertemp(OaPertemp oaPertemp) {
+		this.oaPertemp = oaPertemp;
 	}
 
 }

@@ -24,9 +24,9 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.oa.dao.jpa.IDeptdao;
-import com.oa.dao.jpa.IEmpdao;
-import com.oa.dao.jpa.IJobdao;
+import com.oa.dao.jpa.IOaDeptDao;
+import com.oa.dao.jpa.IOaEmpDao;
+import com.oa.dao.jpa.IOaJobDao;
 import com.oa.pojos.OaDept;
 import com.oa.pojos.OaEmp;
 import com.oa.pojos.OaJob;
@@ -36,13 +36,13 @@ import com.oa.vo.fwt.OaEmpvo;
 @Transactional
 public class Empservice {
 	@Autowired
-	IEmpdao empdao;
+	IOaEmpDao empdao;
 	
 	@Autowired
-	IDeptdao deptdao;
+	IOaDeptDao deptdao;
 	
 	@Autowired
-	IJobdao jobdao;
+	IOaJobDao jobdao;
 	
 	public List<OaJob> findJob(){
 		return jobdao.queryJob();
@@ -87,13 +87,11 @@ public class Empservice {
 					list.add(cb.equal(root.get("empWorkstate").as(String.class), state));
 				}
 				if(!("".equals(begindate)) && begindate != null){
-					list.add(cb.greaterThan(root.get("empEntrydate"), toDate(begindate)));
+					list.add(cb.greaterThanOrEqualTo(root.get("empEntrydate"), toDate(begindate)));
 				}
 				if(!("".equals(enddate)) && enddate != null){
-					list.add(cb.lessThan(root.get("empEntrydate"), toDate(enddate)));
+					list.add(cb.lessThanOrEqualTo(root.get("empEntrydate"), toDate(enddate)));
 				}
-				
-				
 				return cb.and(list.toArray(new Predicate[list.size()]));
 			}
 			

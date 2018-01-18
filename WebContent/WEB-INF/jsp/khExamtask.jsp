@@ -9,22 +9,13 @@
 <script src="../plugs/layui/layui.js"></script>
 <title>考核任务</title>
 <style type="text/css">
-.layui-input {
-	width: 160px;
-}
-
-.layui-inline {
-	margin-top: 20px;
-	text-align: center;
-}
-
-.layui-btn-xs:hover {
-	cursor: pointer;
+.khExamtaskDiv{
+	margin: 10px;
 }
 </style>
 <script type="text/javascript">
 	layui.use([ 'laydate', 'form', 'table' ], function() {
-		var laydate = layui.laydate, form = layui.form;
+		var laydate = layui.laydate, form = layui.form,$=layui.$;
 		//执行一个laydate实例
 		laydate.render({
 			elem : '#kh-task-year',
@@ -36,10 +27,11 @@
 		table.render({
 			elem : '#khTaskTab',
 			height : 320,
-			width : 1200,
+			width : 1130,
 			url : 'find_kh_examtask_list',
 			page : true,
-			cols : [ [ {
+			cols : [[
+			{
 				field : 'khName',
 				title : '考核名称',
 				width : 150,
@@ -62,23 +54,24 @@
 			}, {
 				field : 'khIssue',
 				title : '期次',
-				width : 80,
+				width : 60,
 				align : 'center'
 			}, {
 				field : 'khTime',
 				title : '考核周期',
-				width : 200,
+				width : 190,
 				align : 'center'
 			}, {
 				field : 'khState',
 				title : '状态',
-				width : 100,
+				width : 80,
 				align : 'center'
 			}, {
 				title : '操作',
 				align : 'center',
 				toolbar : '#KhExamtaskBar',
-			} ] ]
+			} 
+			]]
 		});
 
 		//表格内的工具条的点击事件
@@ -87,7 +80,8 @@
 			var layEvent = obj.event; //获得 lay-event 对应的值
 			/* var tr = obj.tr; */// 获得当前行 tr 的DOM对象
 			if (layEvent === 'detail') { 	//查看
-
+				
+				//alert($("[lay-event=detail]").attr("href"));
 			}else if (layEvent === 'detailed') { 	//明细
 			
 			} else if (layEvent === 'del') { 	//删除
@@ -116,13 +110,14 @@
 	});
 </script>
 <script type="text/html" id="KhExamtaskBar">
-	<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail" href="">查看</a>
+	<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail" href="to_see_kh_examtask">查看</a>
 	<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detailed" href="">明细</a>
 	<a class="layui-btn layui-btn-xs" lay-event="edit" href="to_edit_kh_examtask">编辑</a>
 	<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 </head>
 <body>
+<div class="khExamtaskDiv">
 	<form class="layui-form" action="#">
 		<div class="layui-inline">
 			<label>考核年份：</label>
@@ -151,5 +146,6 @@
 		</div>
 	</form>
 	<table id="khTaskTab" lay-filter="khTaskTabfilter"></table>
+</div>
 </body>
 </html>

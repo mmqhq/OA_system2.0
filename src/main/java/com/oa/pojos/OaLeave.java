@@ -19,7 +19,7 @@ public class OaLeave implements Serializable {
 	@Column(name="lea_id")
 	private int leaId;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="apply_date")
 	private Date applyDate;
 
@@ -31,7 +31,7 @@ public class OaLeave implements Serializable {
 	@Column(name="dept_approve_person")
 	private String deptApprovePerson;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date enddate;
 
 	@Column(name="lea_content")
@@ -57,7 +57,7 @@ public class OaLeave implements Serializable {
 	@Column(name="position_approve_person")
 	private String positionApprovePerson;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date startdate;
 
 	public OaLeave() {
