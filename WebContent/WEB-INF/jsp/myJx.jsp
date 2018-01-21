@@ -47,7 +47,7 @@
 		    ,height: 315
 		    ,width:1100
 		    ,url: 'myJx_list'
-		     ,page: true 
+		    ,page: true 
 		    ,cols: [[
 		      {field: 'issue', title: '期次', width:100,align: 'center'}
 		      ,{field: 'levelName', title: '考核等级', width:150,align: 'center'}

@@ -22,6 +22,9 @@ public class OaWhereabout implements Serializable {
 	@Column(name="whe_about")
 	private String wheAbout;
 
+	@Column(name="whe_delstate")
+	private int wheDelstate;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="whe_end")
 	private Date wheEnd;
@@ -34,7 +37,7 @@ public class OaWhereabout implements Serializable {
 	private int wheState;
 
 	//bi-directional many-to-one association to OaEmp
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="emp_id")
 	private OaEmp oaEmp;
 
@@ -55,6 +58,14 @@ public class OaWhereabout implements Serializable {
 
 	public void setWheAbout(String wheAbout) {
 		this.wheAbout = wheAbout;
+	}
+
+	public int getWheDelstate() {
+		return this.wheDelstate;
+	}
+
+	public void setWheDelstate(int wheDelstate) {
+		this.wheDelstate = wheDelstate;
 	}
 
 	public Date getWheEnd() {

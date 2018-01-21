@@ -4,6 +4,7 @@
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 	<class>com.oa.pojos.OaAttendance</class>
 	<class>com.oa.pojos.OaBalance</class>
+	<class>com.oa.pojos.OaBaldetail</class>
 	<class>com.oa.pojos.OaCard</class>
 	<class>com.oa.pojos.OaCardborrow</class>
 	<class>com.oa.pojos.OaContract</class>

@@ -261,6 +261,9 @@ public class OaEmp implements Serializable {
 	//bi-directional many-to-one association to OaWhereabout
 	@OneToMany(mappedBy="oaEmp")
 	private List<OaWhereabout> oaWhereabouts;
+	
+	@ManyToMany(mappedBy="oaEmps")
+	private List<OaExamtask> oaExamtasks;
 
 	//bi-directional many-to-many association to OaTrainplan
 	@ManyToMany
@@ -1117,4 +1120,14 @@ public class OaEmp implements Serializable {
 		this.oaTrainplans2 = oaTrainplans2;
 	}
 
+	public List<OaExamtask> getOaExamtasks() {
+		return oaExamtasks;
+	}
+
+	public void setOaExamtasks(List<OaExamtask> oaExamtasks) {
+		this.oaExamtasks = oaExamtasks;
+	}
+
+	
+	
 }

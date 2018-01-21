@@ -89,7 +89,6 @@
 		table.on('tool(khPertempTabfilter)', function(obj) {
 			var data = obj.data; //获得当前行数据
 			var layEvent = obj.event; //获得 lay-event 对应的值
-			/* var tr = obj.tr; */// 获得当前行 tr 的DOM对象
 			if(layEvent === 'del') { 	//删除
 				layer.confirm('真的删除么？', function(index) {
 					//向服务端发送删除指令
@@ -100,7 +99,7 @@
 					})  
 				});
 			} else if (layEvent === 'edit') { 	//编辑
-			    //$("[lay-event=edit]").attr("href","to_add_kh_pertemp?khId="+data.khId); 
+				$("[lay-event=edit]").attr("href","to_edit_kh_pertemp?state=1&khId="+data.khId); 
 			}
 		});
 		
@@ -161,7 +160,7 @@
 		</div>
 		<div class="layui-inline">
 			<div class="layui-input-inline">
-				<button lay-submit class="layui-btn"lay-filter="chaXunPertemp" style="margin-left: 10px">查询</button>
+				<button lay-submit class="layui-btn" lay-filter="chaXunPertemp" style="margin-left: 10px">查询</button>
 				<a href="to_add_kh_pertemp" class="layui-btn" >增加</a>
 			</div>
 		</div>

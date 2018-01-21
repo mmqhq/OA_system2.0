@@ -47,13 +47,26 @@ public class OaExamtask implements Serializable {
 	private int etYear;
 
 	//bi-directional many-to-one association to OaPertemp
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="pt_id")
 	private OaPertemp oaPertemp;
 
 	//bi-directional many-to-one association to OaScore
 	@OneToMany(mappedBy="oaExamtask")
 	private List<OaScore> oaScores;
+
+	//bi-directional many-to-many association to OaEmp
+	@ManyToMany
+	@JoinTable(
+		name="emp_examtask"
+		, joinColumns={
+			@JoinColumn(name="et_id")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="emp_id")
+			}
+		)
+	private List<OaEmp> oaEmps;
 
 	public OaExamtask() {
 	}
@@ -158,6 +171,14 @@ public class OaExamtask implements Serializable {
 		oaScore.setOaExamtask(null);
 
 		return oaScore;
+	}
+
+	public List<OaEmp> getOaEmps() {
+		return this.oaEmps;
+	}
+
+	public void setOaEmps(List<OaEmp> oaEmps) {
+		this.oaEmps = oaEmps;
 	}
 
 }
